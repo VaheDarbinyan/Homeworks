@@ -1,0 +1,64 @@
+ex1   
+function func(obj){
+    let nObj = {}
+     
+for(let key in obj){
+    if(nObj.hasOwnProperty(obj[key])){
+        if(Array.isArray(nObj[obj[key]])){
+            nObj[obj[key]].push(key)
+        }else{
+             nObj[obj[key]] = [nObj[obj[key]],key]
+        }
+    }else{
+      nObj[obj[key]]= key
+    }
+
+
+
+    
+}
+    return nObj
+}
+
+ex3 function func(str){
+   
+     for(let i = 0; i<str.length;i++){
+         
+         if(str[0] !== str[str.length-1] ){
+             
+             return false
+             
+         }
+         str = str.slice(1,str.length-1)
+     }
+
+
+return true
+
+    
+}
+
+
+ex4
+function func(arr){
+    let minimum = arr[0]
+    let maximum = arr[0]
+    let count = 0
+    for (let elem of arr){
+        if(minimum>elem){
+            minimum = elem
+        }else if(maximum < elem){
+            maximum = elem
+        }
+    }
+    for (let elem  of arr){
+        if(elem === maximum){
+            break
+        }
+        if(elem > minimum){
+            count++
+        }
+        
+    }
+    return count
+}
