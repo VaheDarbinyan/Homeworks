@@ -1,97 +1,62 @@
-//ex1   Given an object. Invert it (keys become values and values become keys). If there is
-     //more than key for that given value create an array.
-
-function func(obj){
-    let nObj = {}
-     
-for(let key in obj){
-    if(nObj.hasOwnProperty(obj[key])){
-        if(Array.isArray(nObj[obj[key]])){
-            nObj[obj[key]].push(key)
-        }else{
-             nObj[obj[key]] = [nObj[obj[key]],key]
-        }
-    }else{
-      nObj[obj[key]]= key
+//repeat
+function repeat(str,count){
+    let str2 = ''
+    for (let i = 0 ; i< count; i++){
+        str2 += ' ' + str
     }
-
-
-
-    
-}
-    return nObj
+    return str2
 }
 
-//ex2 Given two objects. Write a function that performs shallow compare.
+//lastindexof
+function  lastIndexOf(str, subStr) {
+  for (let i = str.length; i >= 0; i--) {
+    let includes = true
+    for (let k = 0; k < subStr.length; k++) {
+      if (str[i + k] !== subStr[k]) {
+        includes = false
+        break
+      }
+    }
+    if (includes) {
+      return i
+    }
+  }
+  return false}
 
-function func(obj1, obj2){
-    for(let key in obj1){
-        if(!obj2.hasOwnProperty(key) || obj1[key] !== obj2[key]){
-            return false;
-        }
+//slice
+function slic(str,  start=0, end=str.length){
+    let nStr = ''
+    for (let i = start;i<end;i++){
+        nStr += str[i]
     }
-    for(let key in obj2){
-        if(!obj1.hasOwnProperty(key) ||  obj1[key] !== obj2[key]){
-            return false;
-        }
+    return nStr
+}
+//subString
+function subString(str,  start=0, end=str.length){
+    let nStr = ''
+    for (let i = start;i<end;i++){
+        nStr += str[i]
     }
-    return true;
+    return nStr
 }
 
-
-
-
-//ex3  Check whether string is palindrome, or not.
-
-function func(str){
-   
-     for(let i = 0; i<str.length;i++){
-         
-         if(str[0] !== str[str.length-1] ){
-             
-             return false
-             
-         }
-         str = str.slice(1,str.length-1)
-     }
-
-
-return true
-
-    
-}
-
-
-  //ex4   Given an array of integers. All numbers are unique. Find the count of missing numbers
-    //between minimum and maximum elements to make integers sequence.
-
-function func(arr){
-    let minimum = arr[0]
-    let maximum = arr[0]
-    let count = 0
-    for (let elem of arr){
-        if(minimum>elem){
-            minimum = elem
-        }else if(maximum < elem){
-            maximum = elem
+//replace
+function replace(string, search, replaceValue) {
+    let result = '';
+    for (let i = 0; i < string.length; i++) {
+        let includes = true;
+        for (let k = 0; k < search.length; k++) {
+            if (string[i + k] !== search[k]) {
+                includes = false
+                break
+            }
         }
+         if (includes) {
+                result += replaceValue
+                i+= search.length - 1
+            } else {
+                result += string[i]
+            }
     }
-    for (let i = minimum; i<maximum; i++){
-        if(!arr.includes(i)){
-           count++
-        }
-        
-        
-    }
-    return count
-}
-
-//ex5 Given an array and element. Check if that element exists in array.
-function func(arr,elem){
-    for (let elem1 of arr){
-        if (elem === elem1){
-            return true
-        }
-    }
-    return false
+      return result;
 }
